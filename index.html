@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shaik Adnanoddin — Regulatory Affairs Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #16294D;
+    --navy-light: #24385E;
+    --paper: #FAF8F3;
+    --paper-dim: #F1EDE3;
+    --teal: #2A7F7E;
+    --ink: #3D3D3D;
+    --ink-light: #6B6B63;
+    --amber: #C8862A;
+    --line: #DCD6C7;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Source Serif 4', serif;
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  a { color: var(--teal); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 3px;
+  }
+
+  /* ===== NAV ===== */
+  .topnav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250, 248, 243, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+  }
+  .nav-logo {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--navy);
+    letter-spacing: 0.2px;
+  }
+  .nav-logo span { color: var(--amber); }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+  .nav-links .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-light);
+    margin-right: 4px;
+  }
+  .nav-toggle { display: none; }
+
+  @media (max-width: 760px) {
+    .nav-links {
+      position: fixed;
+      top: 58px; right: 0;
+      background: var(--paper);
+      flex-direction: column;
+      width: 220px;
+      padding: 20px;
+      gap: 18px;
+      border-left: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      transform: translateX(100%);
+      transition: transform 0.25s ease;
+    }
+    .nav-links.open { transform: translateX(0); }
+    .nav-toggle {
+      display: block;
+      background: none;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 6px 10px;
+      font-size: 18px;
+      color: var(--navy);
+      cursor: pointer;
+    }
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 150px 32px 100px;
+    position: relative;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--teal);
+  }
+  .hero h1 {
+    font-size: 44px;
+    line-height: 1.15;
+    margin-bottom: 18px;
+    letter-spacing: -0.5px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--teal);
+  }
+  .hero p.lede {
+    font-size: 16px;
+    color: var(--ink-light);
+    max-width: 460px;
+    margin-bottom: 30px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 22px;
+    border-radius: 3px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    border: 1px solid var(--navy);
+    transition: all 0.15s ease;
+  }
+  .btn-primary {
+    background: var(--navy);
+    color: var(--white);
+  }
+  .btn-primary:hover { background: var(--navy-light); text-decoration: none; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--navy);
+  }
+  .btn-ghost:hover { background: var(--navy); color: var(--white); text-decoration: none; }
+
+  /* ===== Photo + Stamp overlay ===== */
+  .stamp-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 280px;
+    margin: 0 auto;
+  }
+  .profile-photo {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--white);
+    box-shadow: 0 8px 24px rgba(22, 41, 77, 0.15);
+    display: block;
+  }
+  .stamp {
+    width: 110px;
+    height: 110px;
+    border: 3px solid var(--amber);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-9deg);
+    position: absolute;
+    bottom: -10px;
+    right: -30px;
+    background: var(--paper);
+    z-index: 2;
+  }
+  .stamp::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px dashed var(--amber);
+    border-radius: 50%;
+  }
+  .stamp-text {
+    font-family: 'IBM Plex Mono', monospace;
+    text-align: center;
+    color: var(--amber);
+  }
+  .stamp-text .top {
+    font-size: 6px;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+  }
+  .stamp-text .big {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+  }
+  .stamp-text .bottom {
+    font-size: 6px;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+  @media (max-width: 760px) {
+    .stamp-wrap { width: 200px; }
+    .profile-photo { width: 200px; height: 200px; }
+    .stamp { width: 80px; height: 80px; bottom: -6px; right: -20px; }
+    .stamp-text .big { font-size: 8px; }
+    .stamp-text .top, .stamp-text .bottom { font-size: 5px; }
+  }
+
+  /* ===== SECTION SHELL — dossier module style ===== */
+  .module {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 90px 32px;
+    border-top: 1px solid var(--line);
+    position: relative;
+  }
+  .module-tab {
+    position: absolute;
+    top: -1px;
+    left: 32px;
+    background: var(--navy);
+    color: var(--paper);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 5px 14px;
+    border-radius: 0 0 4px 4px;
+  }
+  .module-head {
+    margin-bottom: 48px;
+  }
+  .module-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--amber);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .module h2 {
+    font-size: 30px;
+  }
+  .module-sub {
+    color: var(--ink-light);
+    font-size: 14px;
+    margin-top: 8px;
+    max-width: 540px;
+  }
+
+  /* ===== ABOUT ===== */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+  }
+  .about-text p { margin-bottom: 16px; font-size: 15px; }
+  .focus-list {
+    list-style: none;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .focus-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--line);
+    font-size: 13px;
+    background: var(--white);
+  }
+  .focus-list li:last-child { border-bottom: none; }
+  .focus-list .f-label { color: var(--ink-light); font-family: 'IBM Plex Mono', monospace; font-size: 11px; }
+  .focus-list .f-val { font-weight: 600; color: var(--navy); }
+
+  /* ===== EDUCATION timeline ===== */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 5px; top: 6px; bottom: 6px;
+    width: 1px;
+    background: var(--line);
+  }
+  .t-item { position: relative; margin-bottom: 36px; }
+  .t-item:last-child { margin-bottom: 0; }
+  .t-item::before {
+    content: '';
+    position: absolute;
+    left: -28px; top: 4px;
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 2px solid var(--teal);
+  }
+  .t-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-light);
+    letter-spacing: 0.5px;
+  }
+  .t-title { font-size: 17px; margin: 4px 0 6px; }
+  .t-desc { font-size: 14px; color: var(--ink-light); max-width: 560px; }
+
+  /* ===== PROJECTS ===== */
+  .proj-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .proj-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .proj-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(22, 41, 77, 0.08);
+  }
+  .proj-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    color: var(--amber);
+    background: rgba(200, 134, 42, 0.1);
+    padding: 4px 9px;
+    border-radius: 3px;
+    width: fit-content;
+    margin-bottom: 16px;
+  }
+  .proj-card h3 { font-size: 17px; margin-bottom: 8px; }
+  .proj-card p { font-size: 13.5px; color: var(--ink-light); flex-grow: 1; margin-bottom: 16px; }
+  .proj-link {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--teal);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  @media (max-width: 900px) {
+    .proj-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 620px) {
+    .proj-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero { padding-top: 120px; }
+  }
+
+  /* ===== SKILLS ===== */
+  .skills-cols {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+  .skill-group h4 {
+    font-size: 13px;
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--ink-light);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+.skill-tag {
+  font-size: 13px;
+  padding: 7px 14px;
+  border-radius: 4px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+  .skill-fill {
+    height: 100%;
+    background: var(--teal);
+    border-radius: 3px;
+  }
+  @media (max-width: 760px) {
+    .skills-cols { grid-template-columns: 1fr; }
+  }
+
+  /* ===== WRITING ===== */
+  .writing-list { display: flex; flex-direction: column; gap: 0; }
+  .write-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    gap: 20px;
+  }
+  .write-item:first-child { padding-top: 0; }
+  .write-title { font-size: 15.5px; color: var(--navy); font-weight: 600; }
+  .write-date { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--ink-light); white-space: nowrap; }
+
+  /* ===== CONTACT ===== */
+  .contact-row {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  .contact-card {
+    flex: 1;
+    min-width: 180px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 20px;
+  }
+  .contact-card .c-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-light);
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .contact-card .c-val { font-size: 14.5px; font-weight: 600; color: var(--navy); display: block; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--navy);
+    color: rgba(250,248,243,0.7);
+    text-align: center;
+    padding: 28px 32px;
+    font-size: 12.5px;
+  }
+  footer a { color: rgba(250,248,243,0.9); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .proj-card { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="nav-inner">
+    <div class="nav-logo">Shaik<span>Adnanoddin</span></div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about"><span class="tag">01</span>About</a></li>
+      <li><a href="#education"><span class="tag">02</span>Education</a></li>
+      <li><a href="#projects"><span class="tag">03</span>Projects</a></li>
+      <li><a href="#skills"><span class="tag">04</span>Skills</a></li>
+      <li><a href="#writing"><span class="tag">05</span>Writing</a></li>
+      <li><a href="#contact"><span class="tag">06</span>Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow">M Pharmacy · Regulatory Affairs</p>
+      <h1>Learning to turn regulatory<br>complexity into <em>clear submissions.</em></h1>
+      <p class="lede">I'm Shaik Adnan, an M Pharmacy student specializing in Regulatory Affairs, based in Hyderabad. I write, study, and build toward a career preparing dossiers that meet USFDA, EMA, and CDSCO standards.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">Review my work →</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+    </div>
+    <div class="stamp-wrap">
+      <img src="Profile.jpeg" alt="Shaik Adnan" class="profile-photo">
+      <div class="stamp">
+        <div class="stamp-text">
+          <div class="top">— REVIEW COPY —</div>
+          <div class="big">Shaik<br>Adnan</div>
+          <div class="bottom">REG. AFFAIRS · 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="module" id="about">
+  <span class="module-tab">MODULE 01</span>
+  <div class="module-head">
+    <p class="module-num">01 — ADMINISTRATIVE</p>
+    <h2>About</h2>
+    <p class="module-sub">The short version of who I am and what I'm building toward.</p>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm currently pursuing my M Pharmacy with a specialization in Regulatory Affairs. My focus is understanding how drugs move from development to approval — across USFDA, EMA, and CDSCO frameworks — and learning to translate that complexity into clear, compliant documentation.</p>
+      <p>Outside the classroom, I run <a href="https://www.linkedin.com/company/the-regulatory-navigator/?viewAsMember=true" target="_blank" rel="noopener">The Regulatory Navigator</a> on LinkedIn, where I write about regulatory affairs, QA, and QC insights and job updates for pharma audience. It keeps me close to real industry conversations while I build toward my first RA role.</p>
+    </div>
+    <ul class="focus-list">
+      <li><span class="f-label">LOCATION</span><span class="f-val">Hyderabad, India</span></li>
+      <li><span class="f-label">DEGREE</span><span class="f-val">M Pharmacy — Reg. Affairs</span></li>
+      <li><span class="f-label">FOCUS AREAS</span><span class="f-val">USFDA · ICH · CTD</span></li>
+      <li><span class="f-label">STATUS</span><span class="f-val">Seeking RA Internship</span></li>
+      <li><span class="f-label">ALSO BUILDING</span><span class="f-val">The Regulatory Navigator</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="module" id="education">
+  <span class="module-tab">MODULE 02</span>
+  <div class="module-head">
+    <p class="module-num">02 — BACKGROUND</p>
+    <h2>Education & Training</h2>
+    <p class="module-sub">Academic foundation and the credentials I'm actively adding.</p>
+  </div>
+  <div class="timeline">
+    <div class="t-item">
+      <div class="t-date">2025 — PRESENT</div>
+      <h3 class="t-title">M Pharmacy — Regulatory Affairs</h3>
+      <p class="t-desc">Coursework covering CTD/eCTD format, ICH guidelines (Q1, Q3, Q8), GMP/GCP frameworks, and global drug approval pathways including NDA, ANDA, and BLA routes.</p>
+    </div>
+    <div class="t-item">
+      <div class="t-date">2021 — 2025</div>
+      <h3 class="t-title">Bachelor of Pharmacy (B.Pharm)</h3>
+      <p class="t-desc">Foundational training in pharmacology, pharmaceutics, microbiology, and quality assurance — the base on which regulatory specialization is built.</p>
+    </div>
+    <div class="t-item">
+      <div class="t-date">IN PROGRESS</div>
+      <h3 class="t-title">Certifications — Hands on eCTD Preparation & Submission, GCP, GMP, ICH Self-Study</h3>
+      <p class="t-desc">Working through WHO TDR's free GCP training and structured self-study of core ICH quality guidelines.</p>
+    </div>
+  </div>
+</section>
+
+<section class="module" id="projects">
+  <span class="module-tab">MODULE 03</span>
+  <div class="module-head">
+    <p class="module-num">03 — QUALITY</p>
+    <h2>Projects & Work Samples</h2>
+    <p class="module-sub">Self-directed work built to mirror real regulatory deliverables.</p>
+  </div>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <span class="proj-tag">CTD MODULE 1–5</span>
+      <h3>Mock CTD Dossier</h3>
+      <p>A self-prepared Module 1-5 ANDA including cover letter and Module 2.3 Quality Overall Summary & other modules, structured to USFDA eCTD format conventions.</p>
+      <a class="proj-link" href="https://drive.google.com/drive/folders/133lAwaBmE35FqByjrSVei-mN_eKSrnJD?usp=sharing" target="_blank" rel="noopener">View PDF →</a>
+    </div>
+    <div class="proj-card">
+      <span class="proj-tag">ICH Q1A</span>
+      <h3>Stability Gap Analysis</h3>
+      <p>A requirements-vs-status mapping built against ICH Q1A stability testing guidance, identifying documentation gaps in a mock product file.</p>
+      <a class="proj-link" href="https://docs.google.com/spreadsheets/d/1tOZJSudLKIxAvLSyeB-U0amzc-RANXMl/edit?usp=sharing&ouid=110726776417953808418&rtpof=true&sd=true" target="_blank" rel="noopener">View sheet →</a>
+    </div>
+    <div class="proj-card">
+      <span class="proj-tag">COMPARATIVE</span>
+      <h3>Approval Pathways of FDA & EMA</h3>
+      <p>A plain-English explainer comparing the major USFDA and EMA approval pathways, written for both regulatory and non-regulatory readers.</p>
+      <a class="proj-link" href="https://drive.google.com/drive/folders/1yYuguuCtEoMrDxsJnZ5_-f0R7Z5vBQnE?usp=sharing" target="_blank" rel="noopener">Read articles →</a>
+    </div>
+    <div class="proj-card">
+      <span class="proj-tag">SOP</span>
+      <h3>Mock SOP — Document Control</h3>
+      <p>A standard operating procedure written from scratch covering version control and document approval workflows.</p>
+      <a class="proj-link" href="https://drive.google.com/file/d/18nbL7ugnxkLodsQtpZBUJCNrJrwNowOt/view?usp=sharing" target="_blank" rel="noopener">View PDF →</a>
+    </div>
+    <div class="proj-card">
+      <span class="proj-tag">LABELLING</span>
+      <h3>Prescribing Information Recreation</h3>
+      <p>A recreated prescribing information sheet for an existing generic drug, formatted to USFDA labelling structure, using Smart eCTD platform.</p>
+      <a class="proj-link" href="https://drive.google.com/file/d/1-_tmzF9lHiQzQvICpvXipHJo43AHN62k/view?usp=sharing" target="_blank" rel="noopener">View PDF →</a>
+    </div>
+    <div class="proj-card">
+      <span class="proj-tag">TRACKING</span>
+      <h3>Submission Tracker Template</h3>
+      <p>An Excel-based tracker for monitoring dossier modules, submission status, and agency response timelines.</p>
+      <a class="proj-link" href="https://docs.google.com/spreadsheets/d/1ircqXqXu_oK9HwgEQae7HleLL15vn-3h/edit?usp=drive_link&ouid=110726776417953808418&rtpof=true&sd=true" target="_blank" rel="noopener">View sheet →</a>
+    </div>
+  </div>
+</section>
+
+<section class="module" id="skills">
+  <span class="module-tab">MODULE 04</span>
+  <div class="module-head">
+    <p class="module-num">04 — NONCLINICAL</p>
+    <h2>Skills & Knowledge Areas</h2>
+    <p class="module-sub">Where I currently stand across core regulatory competencies.</p>
+  </div>
+  <div class="skills-cols">
+    <div class="skill-group">
+      <h4>Regulatory knowledge</h4>
+      <div class="skill-tags">
+  <span class="skill-tag">CTD / eCTD structure</span>
+  <span class="skill-tag">ICH guidelines (Q-series)</span>
+  <span class="skill-tag">USFDA / EMA / CDSCO</span>
+  <span class="skill-tag">GMP / GCP frameworks</span>
+</div>
+   <div class="skill-tags">
+  <span class="skill-tag">Adobe Acrobat Pro</span>
+  <span class="skill-tag">MS Office </span>
+  <span class="skill-tag">Document management</span>
+  <span class="skill-tag">eCTD publishing tools (Smart eCTD certified)</span>
+</div>
+    </div>
+  </div>
+</section>
+
+<section class="module" id="writing">
+  <span class="module-tab">MODULE 05</span>
+  <div class="module-head">
+    <p class="module-num">05 — CLINICAL </p>
+    <h2>Writing & LinkedIn</h2>
+    <p class="module-sub">Selected posts from my personal profile & The Regulatory Navigator.</p>
+  </div>
+  <div class="writing-list">
+    <div class="write-item">
+      <a class="write-title" href="https://www.linkedin.com/posts/shaik-adnan-ra_pdf-compliance-activity-7401606083934613504-LoKK?utm_source=share&utm_medium=member_desktop&rcm=ACoAAENfxYoBdwoMx22Gj4jtnWxv6BxAMbpWcjk" target="_blank" rel="noopener">Why PDF compliance matters</a>
+      <span class="write-date">JAN 2026</span>
+    </div>
+    <div class="write-item">
+      <a class="write-title" href="https://www.linkedin.com/posts/shaik-adnan-ra_qos-activity-7407766706762219520-WBi9?utm_source=share&utm_medium=member_desktop&rcm=ACoAAENfxYoBdwoMx22Gj4jtnWxv6BxAMbpWcjk" target="_blank" rel="noopener">Mastering the Quality Overall Summary (QOS)</a>
+      <span class="write-date">FEB 2026</span>
+    </div>
+    <div class="write-item">
+      <span class="write-title">Reading an FDA warning letter like a regulatory professional</span>
+      <span class="write-date">APR 2026</span>
+    </div>
+    <div class="write-item">
+      <span class="write-title">CTD vs eCTD: the difference that confuses every fresher</span>
+      <span class="write-date">MAR 2026</span>
+    </div>
+  </div>
+</section>
+
+<section class="module" id="contact">
+  <span class="module-tab">Let's connect</span>
+  <div class="module-head">
+    <p class="module-num">06 — CORRESPONDENCE</p>
+    <h2>Get in Touch</h2>
+    <p class="module-sub">Open to internship and entry-level Regulatory Affairs opportunities.</p>
+  </div>
+  <div class="contact-row">
+    <div class="contact-card">
+      <span class="c-label">EMAIL</span>
+      <a class="c-val" href="mailto:adnanoddinshaik@gmail.com">adnanoddinshaik@gmail.com</a>
+    </div>
+    <div class="contact-card">
+      <span class="c-label">LINKEDIN</span>
+      <a class="c-val" href="https://www.linkedin.com/in/shaik-adnan-ra/" target="_blank" rel="noopener">Shaik Adnan</a>
+    </div>
+    <div class="contact-card">
+      <span class="c-label">LOCATION</span>
+      <span class="c-val">Hyderabad, Telangana</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Shaik Adnan · All rights reserved · Built with intent, one module at a time.
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+</script>
+
+</body>
+</html>
